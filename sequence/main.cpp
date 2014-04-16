@@ -1,16 +1,32 @@
 
 #include <iostream>
+#include <vector>
 #include <math.h>
+
+
+std::vector<long> getLongestSequence(long n) {
+    std::vector<long> sequence = {1};
+    
+    for(int val = 2; val <= n; val *= 2) {
+        sequence.push_back(val);
+    }
+    return sequence;
+}
 
 int main(int argc, const char * argv[])
 {
-    int h, v, result;
+    long n;
 
-    scanf ("%i %i", &h, &v);
+    scanf ("%li", &n);
     
-    result = (h / sin(v * M_PI/180)) + 1;
+    std::vector<long> sequence = getLongestSequence(n);
     
-    printf("%i\n", result);
+    printf("%lu\n", sequence.size());
+    
+    for(long val: sequence) {
+        printf("%li ", val);
+    }
+    printf("\n");
     
     return 0;
 }
